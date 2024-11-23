@@ -133,3 +133,53 @@ h2 {
 span.highlight {
   background-color: #ffffd0;
 }
+
+/* Navigation Bar Styling */
+nav {
+  background-color: #f8f9fa; /* Light gray background */
+  padding: 10px 0; /* Vertical padding for spacing */
+  font-family: Arial, sans-serif; /* Modern, clean font */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  text-align: center; /* Center-align the navigation items */
+  position: sticky; /* Keep navigation bar fixed when scrolling */
+  top: 0;
+  z-index: 1000; /* Ensure it stays above other content */
+}
+
+/* Navigation Links */
+nav a {
+  margin: 0 15px; /* Horizontal spacing between links */
+  text-decoration: none; /* Remove underline from links */
+  color: #007bff; /* Blue color for links */
+  font-weight: bold; /* Bold font for better visibility */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Hover and Active Link States */
+nav a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+nav a.active {
+  color: #495057; /* Dark gray for active link */
+  font-weight: bold;
+  border-bottom: 2px solid #495057; /* Underline to highlight active link */
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth; /* Smooth scrolling effect for anchor links */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav a {
+    display: block; /* Stack links vertically on small screens */
+    margin: 10px 0; /* Add vertical spacing between links */
+  }
+
+  nav {
+    padding: 20px 0; /* Adjust padding for better appearance */
+  }
+}

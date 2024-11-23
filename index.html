@@ -10,6 +10,21 @@
   </head>
 
   <body>
+    <nav role="navigation" aria-label="Main navigation" style="text-align: center; margin-bottom: 20px;">
+      <div style="position: relative; display: inline-block;">
+        <a href="#home" class="active" style="margin-right: 15px;">Home</a>
+        <a href="#research" style="margin-right: 15px;">Research</a>
+        <div class="dropdown">
+          <button style="margin-right: 15px;">Public Goods</button>
+          <div class="dropdown-content" style="display: none; position: absolute;">
+            <a href="#notes">Notes</a>
+            <a href="#resources">Resources</a>
+          </div>
+        </div>
+        <a href="#personal" style="margin-right: 15px;">Personal</a>
+        <a href="#news" style="margin-right: 15px;">News</a>
+      </div>
+    </nav>
     <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
       <tbody>
         <tr style="padding:0px">
@@ -41,7 +56,7 @@
                 </tr>
               </tbody>
             </table>
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <table id="research" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
                 <tr>
                   <td style="padding:20px;width:100%;vertical-align:middle">
@@ -54,32 +69,30 @@
               </tbody>
             </table>
             
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <table id="public-goods" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
               <tbody>
                 <tr>
                   <td style="padding:20px;width:100%;vertical-align:middle">
                     <h2>Public Goods</h2>
                     <p>Curated resources, notes, and tips that might be helpful for students and learners.</p>
-            
-                    <h3>1. IISERB Undergraduate Notes</h3>
+          
+                    <h3 id="notes">1. IISERB Undergraduate Notes</h3>
                     <p>
                       A collection of notes and materials from various courses at IISER Bhopal, prepared during my undergraduate studies. 
-                      <a href="#" target="_blank">Access Notes</a>
+                      <a href="notes.html" target="_blank">Access Notes</a>
                     </p>
-            
-                    <h3>2.Lectures & Notes</h3>
+          
+                    <h3 id="courses">2. Lectures & Notes</h3>
                     <p>
                       A list of good-quality lectures and notes that I found valuable. 
-                      <a href="#" target="_blank">View Courses</a>
+                      <a href="courses.html" target="_blank">View Courses</a>
                     </p>
-            
-                    <h3>3. Other Resources</h3>
+          
+                    <h3 id="resources">3. Other Resources</h3>
                     <p>
                       Books, websites, and tools that can aid in self-study and skill development.
-                      <a href="#" target="_blank">Explore Resources</a>
+                      <a href="resources.html" target="_blank">Explore Resources</a>
                     </p>
-            
-              
                   </td>
                 </tr>
               </tbody>
