@@ -1,0 +1,22 @@
+<nav role="navigation" aria-label="Main navigation" style="text-align: center; margin-bottom: 20px; background-color: #333; padding: 10px;">
+    <div style="display: inline-block;">
+      <a href="index.html" style="margin-right: 15px; color: white; text-decoration: none; padding: 10px; transition: background-color 0.3s;" id="homeLink">Home</a>
+      <a href="research.html" style="margin-right: 15px; color: white; text-decoration: none; padding: 10px; transition: background-color 0.3s;" id="researchLink">Research</a>
+      <a href="public-goods.html" style="margin-right: 15px; color: white; text-decoration: none; padding: 10px; transition: background-color 0.3s;" id="publicGoodsLink">Public Goods</a>
+      <a href="personal.html" style="margin-right: 15px; color: white; text-decoration: none; padding: 10px; transition: background-color 0.3s;" id="personalLink">Personal</a>
+      <a href="news.html" style="margin-right: 15px; color: white; text-decoration: none; padding: 10px; transition: background-color 0.3s;" id="newsLink">News</a>
+    </div>
+  </nav>
+  
+  <script>
+    // Highlight the active page by adding the 'active' class to the corresponding link
+    const currentPage = window.location.pathname.split("/").pop();
+    const links = document.querySelectorAll("a");
+  
+    links.forEach(link => {
+      if (link.href.includes(currentPage)) {
+        link.classList.add("active");
+      }
+    });
+  </script>
+  
