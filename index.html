@@ -12,19 +12,40 @@
   <body>
     <nav role="navigation" aria-label="Main navigation" style="text-align: center; margin-bottom: 20px;">
       <div style="position: relative; display: inline-block;">
-        <a href="#home" class="active" style="margin-right: 15px;">Home</a>
+        <a href="index.html" class="active" style="margin-right: 15px;">Home</a>
         <a href="#research" style="margin-right: 15px;">Research</a>
-        <div class="dropdown">
-          <button style="margin-right: 15px;">Public Goods</button>
-          <div class="dropdown-content" style="display: none; position: absolute;">
-            <a href="#notes">Notes</a>
-            <a href="#resources">Resources</a>
+        
+        <!-- Dropdown for Public Goods -->
+        <div class="dropdown" style="display: inline-block;">
+          <button style="margin-right: 15px; background-color: #f1f1f1; border: 1px solid #ccc; padding: 10px;">Public Goods</button>
+          <div class="dropdown-content" style="display: none; position: absolute; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); z-index: 1;">
+            <a href="notes.html">Notes</a>
+            <a href="resources.html">Resources</a>
           </div>
         </div>
-        <a href="#personal" style="margin-right: 15px;">Personal</a>
-        <a href="#news" style="margin-right: 15px;">News</a>
+  
+        <!-- Links for Personal and News (linking to separate pages) -->
+        <a href="personal.html" style="margin-right: 15px;">Personal</a>
+        <a href="news.html" style="margin-right: 15px;">News</a>
       </div>
     </nav>
+  
+    <!-- JavaScript for Dropdown functionality -->
+    <script>
+      // Get the dropdown elements
+      var dropdown = document.querySelector('.dropdown');
+      var dropdownContent = dropdown.querySelector('.dropdown-content');
+  
+      // Show the dropdown when hovering over the button
+      dropdown.addEventListener('mouseover', function() {
+        dropdownContent.style.display = 'block';
+      });
+  
+      // Hide the dropdown when the mouse leaves
+      dropdown.addEventListener('mouseleave', function() {
+        dropdownContent.style.display = 'none';
+      });
+    </script>
     <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
       <tbody>
         <tr style="padding:0px">
