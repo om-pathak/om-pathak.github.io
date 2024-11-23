@@ -10,16 +10,37 @@
   </div>
 </nav>
 
-  
-  <script>
-    // Highlight the active page by adding the 'active' class to the corresponding link
-    const currentPage = window.location.pathname.split("/").pop();
-    const links = document.querySelectorAll("a");
-  
+<script>
+  // Highlight the active page by adding the 'active' class to the corresponding link
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPage = window.location.href;
+    const links = document.querySelectorAll("nav a");
+
     links.forEach(link => {
-      if (link.href.includes(currentPage)) {
-        link.classList.add("active");
+      if (currentPage.includes(link.getAttribute("href"))) {
+        link.style.backgroundColor = "#444"; // Highlight the active link
+        link.style.borderRadius = "5px";
       }
     });
-  </script>
-  
+  });
+
+  // Dark mode toggle function
+  function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+
+    const button = document.getElementById("dark-mode-btn");
+    button.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
+  }
+</script>
+
+<style>
+  /* Dark Mode Styles */
+  .dark-mode {
+    background-color: #121212;
+    color: white;
+  }
+  .dark-mode nav {
+    background-color: #222;
+  }
+</style>
