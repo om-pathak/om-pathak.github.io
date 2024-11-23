@@ -1,122 +1,101 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Om Pathak</title>
-  <style>
-    /* General styling for dark and light modes */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
-      color: #000;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Om Pathak</title>
+    <meta name="author" content="Om Pathak">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  </head>
 
-    /* Dark mode styles */
-    body.dark-mode {
-      background-color: #121212;
-      color: #e0e0e0;
-    }
+  <body>
+    <div id="navbar"></div>
+  
+    <!-- JavaScript for Dropdown functionality -->
+    <script>
+      // Get the dropdown elements
+      var dropdown = document.querySelector('.dropdown');
+      var dropdownContent = dropdown.querySelector('.dropdown-content');
+  
+      // Show the dropdown when hovering over the button
+      dropdown.addEventListener('mouseover', function() {
+        dropdownContent.style.display = 'block';
+      });
+  
+      // Hide the dropdown when the mouse leaves
+      dropdown.addEventListener('mouseleave', function() {
+        dropdownContent.style.display = 'none';
+      });
+    </script>
+    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+      <tbody>
+        <tr style="padding:0px">
+          <td style="padding:0px">
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+              <tbody>
+                <tr style="padding:0px">
+                  <td style="padding:2.5%;width:63%;vertical-align:middle">
+                    <p class="name" style="text-align: center;">
+                      Om Pathak
+                    </p>
+                    <p>
+                      Welcome to my website :)<br>
+                      I am a 4th-year Bachelor of Science (BS) student in Economics (major) and Data Science (minor) at the
+                      <a href="https://www.iiserb.ac.in/" target="_blank">Indian Institute of Science Education and Research Bhopal (IISERB)</a>.<br>
+                      My research interests lie primarily in the fields of game theory, mechanism design, and social choice theory.<br>
+                      I am also interested in the intersection of computation and economics, like Algorithmic Game Theory and Computational Social Choice.<br>
+                      Beyond academics, I am a passionate quizzer and avid reader with a keen interest in philosophy and politics.
+                    </p>
+                                     
+                    <p style="text-align:center">
+                      <a href="mailto:om21@iiserb.ac.in">Email</a> &nbsp;/&nbsp;
+                      <a href="data/OmPathak-CV.pdf">CV</a> &nbsp;/&nbsp;
+                      <a href="https://twitter.com/ompathak_">Twitter</a> &nbsp;/&nbsp;
+                      <a href="https://www.linkedin.com/in/ompathak30/">LinkedIn</a> &nbsp;/&nbsp;
+                      <a href="https://github.com/om-pathak">Github</a>
+                    </p>
+                  </td>
+                  <td style="padding:2.5%;width:40%;max-width:40%">
+                    <a href="images/OmPathak.jpg">
+                      <img style="width:100%;max-width:100%;object-fit:cover;border-radius:50%;" alt="profile photo" src="images/OmPathak.jpg" class="hoverZoomLink">
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    /* Name styling */
-    .name {
-      font-size: 36px;
-      font-weight: bold;
-      color: #1a73e8; /* Blue color that works well in both light and dark modes */
-      text-align: center;
-    }
+    <!-- Add JavaScript to dynamically load the navbar -->
+  <script>
+    // Fetch the navbar HTML and insert it into the page
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
 
-    .name.dark-mode {
-      color: #82aaff; /* Lighter blue for dark mode */
-    }
+    // Highlight the active link based on the current page
+    window.addEventListener('load', function () {
+      const currentPage = window.location.pathname.split("/").pop();
+      const links = document.querySelectorAll("a");
 
-    /* Link styles */
-    a {
-      color: #1a73e8;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Styling for the profile photo */
-    img {
-      width: 100%;
-      max-width: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    /* Container styling */
-    .container {
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .profile {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2.5%;
-    }
-
-    .profile-text {
-      width: 63%;
-    }
-
-    .profile-photo {
-      width: 35%;
-      max-width: 40%;
-    }
-  </style>
-</head>
-<body>
-
-  <div id="navbar"></div>
-
-  <div class="container">
-    <div class="profile">
-      <div class="profile-text">
-        <p class="name">
-          Om Pathak
-        </p>
-        <p>
-          Welcome to my website :) <br>
-          I am a 4th-year Bachelor of Science (BS) student in Economics(major) and Data Science(minor) at the
-          <a href="https://www.iiserb.ac.in/" target="_blank">Indian Institute of Science Education and Research Bhopal (IISERB)</a>. 
-          My research interests lie primarily in the fields of game theory, mechanism design, and social choice theory. 
-          I am also interested in the intersection of computation and economics, like Algorithmic Game Theory and Computational Social Choice. 
-          Beyond academics, I am a passionate quizzer and avid reader with a keen interest in philosophy and politics.
-        </p>                  
-        <p style="text-align:center">
-          <a href="mailto:om21@iiserb.ac.in">Email</a> &nbsp;/&nbsp;
-          <a href="data/OmPathak-CV.pdf">CV</a> &nbsp;/&nbsp;
-          <a href="https://twitter.com/ompathak_">Twitter</a> &nbsp;/&nbsp;
-          <a href="https://www.linkedin.com/in/ompathak30/">LinkedIn</a> &nbsp;/&nbsp;
-          <a href="https://github.com/om-pathak">Github</a>
-        </p>
-      </div>
-      <div class="profile-photo">
-        <a href="images/OmPathak.jpg">
-          <img alt="profile photo" src="images/OmPathak.jpg" class="hoverZoomLink">
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- JavaScript for toggling dark mode -->
+      links.forEach(link => {
+        if (link.href.includes(currentPage)) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+  
   <script>
     // Function to toggle dark mode
     function toggleDarkMode() {
       const body = document.body;
       const button = document.getElementById('dark-mode-btn');
-
+  
       // Toggle the 'dark-mode' class on the body element
       body.classList.toggle('dark-mode');
       
@@ -135,7 +114,7 @@
         document.getElementById('dark-mode-btn').innerHTML = '🌞'; // Sun for light mode
       }
     });
-
+  
     // Save the theme choice to localStorage when toggled
     window.addEventListener('beforeunload', () => {
       if (document.body.classList.contains('dark-mode')) {
@@ -145,6 +124,7 @@
       }
     });
   </script>
-
-</body>
+  
+    
+  </body>
 </html>
