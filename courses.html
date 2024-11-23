@@ -13,31 +13,148 @@
     <p>
       A curated list of high-quality lectures and courses across various sub-disciplines that I found particularly useful.
     </p>
+    <!-- Search Functionality -->
+    <input 
+      type="text" 
+      id="searchBar" 
+      placeholder="Search resources..." 
+      style="width: 100%; padding: 10px; margin-bottom: 20px; font-size: 16px; border: 1px solid #ccc; border-radius: 5px;"
+      onkeyup="filterResources()"
+    />
+    <p id="noResultsMessage" style="display: none; color: red; font-weight: bold; text-align: center;">No matching resources found.</p>
+
+    <h2>Index</h2>
     <ul>
-      <li><a href="https://example-course1.com" target="_blank">Introduction to Game Theory (Course by Prof. X)</a></li>
-      <li><a href="https://example-course2.com" target="_blank">Advanced Mechanism Design (Lecture Series by Prof. Y)</a></li>
-      <li><a href="https://example-course3.com" target="_blank">Algorithms for Social Choice (Workshop by Dr. Z)</a></li>
+      <li><a href="#microeconomics">Microeconomics</a></li>
+      <li><a href="#macroeconomics">Macroeconomics</a></li>
+      <li><a href="#econometrics">Econometrics</a></li>
+      <li><a href="#game-theory">Game Theory</a></li>
+      <li><a href="#mechanism-design">Mechanism Design</a></li>
+      <li><a href="#general-equilibrium">General Equilibrium</a></li>
+      <li><a href="#social-choice-theory">Social Choice Theory</a></li>
+      <li><a href="#mathematics-for-economists">Mathematics for Economists</a></li>
+      <li><a href="#industrial-organization">Industrial Organization</a></li>
+      <li><a href="#development-economics">Development Economics</a></li>
+      <li><a href="#international-economics">International Economics</a></li>
     </ul>
+
+    <h2 id="microeconomics">Microeconomics</h2>
+    <ul>
+      <li><a href="https://oyc.yale.edu/economics/econ-159" target="_blank">Introduction to Microeconomics - Yale Open Courses</a></li>
+    </ul>
+
+    <h2 id="macroeconomics">Macroeconomics</h2>
+    <ul>
+      <li><a href="https://www.core-econ.org/the-economy/" target="_blank">The Economy - CORE Project</a></li>
+    </ul>
+
+    <h2 id="econometrics">Econometrics</h2>
+    <ul>
+      <li><a href="https://www.econometrics-with-r.org/" target="_blank">Econometrics With R</a></li>
+    </ul>
+
+    <h2 id="game-theory">Game Theory</h2>
+    <ul>
+      <li><a href="https://nptel.ac.in/courses/110104074" target="_blank">NPTEL: Introduction to Game Theory</a></li>
+    </ul>
+
+    <h2 id="mechanism-design">Mechanism Design</h2>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=rZ2HwAtmtXk" target="_blank">Mechanism Design by Sandel (YouTube)</a></li>
+    </ul>
+
+    <h2 id="general-equilibrium">General Equilibrium</h2>
+    <ul>
+      <li><a href="https://www.edx.org/course/introduction-to-general-equilibrium" target="_blank">Introduction to General Equilibrium - edX</a></li>
+    </ul>
+
+    <h2 id="social-choice-theory">Social Choice Theory</h2>
+    <ul>
+      <li><a href="https://www.coursera.org/learn/fairness-in-social-choice" target="_blank">Fairness in Social Choice - Coursera</a></li>
+    </ul>
+
+    <h2 id="mathematics-for-economists">Mathematics for Economists</h2>
+    <ul>
+      <li><a href="https://oyc.yale.edu/economics/econ-115" target="_blank">Mathematics for Economists - Yale Open Courses</a></li>
+    </ul>
+
+    <h2 id="industrial-organization">Industrial Organization</h2>
+    <ul>
+      <li><a href="https://www.coursera.org/learn/industrial-organization" target="_blank">Industrial Organization - Coursera</a></li>
+    </ul>
+
+    <h2 id="development-economics">Development Economics</h2>
+    <ul>
+      <li><a href="https://www.edx.org/course/foundations-of-development-policy" target="_blank">Foundations of Development Policy - MITx</a></li>
+    </ul>
+
+    <h2 id="international-economics">International Economics</h2>
+    <ul>
+      <li><a href="https://nptel.ac.in/courses/109104157" target="_blank">NPTEL: International Economics</a></li>
+    </ul>
+
   </div>
-> <!-- Add JavaScript to dynamically load the navbar -->
-<script>
-  // Fetch the navbar HTML and insert it into the page
-  fetch('navbar.html')
-    .then(response => response.text())
-    .then(data => document.getElementById('navbar').innerHTML = data);
+  
 
-  // Highlight the active link based on the current page
-  window.addEventListener('load', function () {
-    const currentPage = window.location.pathname.split("/").pop();
-    const links = document.querySelectorAll("a");
+  <script>
+    // Search function to filter resource links and highlight matches
+    function filterResources() {
+      const searchValue = document.getElementById("searchBar").value.toLowerCase();
+      const resourceLists = document.querySelectorAll(".resource-list");
+      const noResultsMessage = document.getElementById("noResultsMessage");
+      let hasResults = false;
 
-    links.forEach(link => {
-      if (link.href.includes(currentPage)) {
-        link.classList.add("active");
+      resourceLists.forEach(list => {
+        const items = list.querySelectorAll("li");
+        items.forEach(item => {
+          const link = item.querySelector("a");
+          const text = link.textContent.toLowerCase();
+
+          // Clear previous highlighting
+          const originalText = link.textContent;
+          link.innerHTML = originalText;
+
+          if (text.includes(searchValue)) {
+            item.style.display = ""; // Show the item
+            hasResults = true;
+
+            // Highlight the matching text
+            const regex = new RegExp(`(${searchValue})`, "gi");
+            link.innerHTML = originalText.replace(regex, `<span style="background-color: yellow;">$1</span>`);
+          } else {
+            item.style.display = "none"; // Hide the item
+          }
+        });
+      });
+
+      // Show "No results" message if no matches found
+      if (!hasResults) {
+        noResultsMessage.style.display = "block";
+      } else {
+        noResultsMessage.style.display = "none";
       }
+    }
+  </script>
+
+  <!-- Add JavaScript to dynamically load the navbar -->
+  <script>
+    // Fetch the navbar HTML and insert it into the page
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
+
+    // Highlight the active link based on the current page
+    window.addEventListener('load', function () {
+      const currentPage = window.location.pathname.split("/").pop();
+      const links = document.querySelectorAll("a");
+
+      links.forEach(link => {
+        if (link.href.includes(currentPage)) {
+          link.classList.add("active");
+        }
+      });
     });
-  });
-</script>
+  </script>
 
 <script>
   // Function to toggle dark mode
@@ -73,6 +190,29 @@
     }
   });
 </script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  h2 {
+    color: #333;
+    margin-top: 30px;
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  a {
+    text-decoration: none;
+    color: #0066cc;
+    transition: color 0.3s;
+  }
+  a:hover {
+    color: #ff6600;
+  }
+</style>
 
+  
 </body>
 </html>
