@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IISERB Courses</title>
+  <!-- Add your CSS link here -->
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <h1>IISERB Courses</h1>
+
+<!-- Courses Section -->
+<section id="courses">
+  <h2>Courses Offered</h2>
+
+  <!-- Economics Courses -->
+  <section id="economics-courses">
+    <h3>Economics Courses</h3>
+    <ul>
+      <li><strong>ECO101</strong> Principles of Economics I</li>
+      <li><strong>ECO102</strong> Principles of Economics II</li>
+      <li><strong>ECO201</strong> Econometrics I</li>
+      <li><strong>ECO202</strong> Microeconomics I</li>
+      <li><strong>ECO204</strong> Macroeconomics I</li>
+      <li><strong>ECO302</strong> Macroeconomics II</li>
+      <li><strong>ECO303</strong> Microeconomics II</li>
+      <li><strong>ECO305</strong> Econometrics II</li>
+      <li><strong>ECO307</strong> Game Theory</li>
+      <li><strong>ECO301</strong> India in the World Economy</li>
+      <li><strong>ECO304</strong> International Economics</li>
+      <li><strong>ECO306</strong> Development Economics</li>
+      <li><strong>ECO323</strong> Mathematics for Economists</li>
+      <li><strong>ECO324</strong> General Equilibrium and Welfare Economics</li>
+    </ul>
+  </section>
+
+  <!-- Math and Data Science Courses -->
+  <section id="math-data-science-courses">
+    <h3>Math and Data Science Courses</h3>
+    <ul>
+      <li><strong>MTH101</strong> Calculus of One Variable</li>
+      <li><strong>MTH102</strong> Linear Algebra</li>
+      <li><strong>ECS102</strong> Introduction to Programming</li>
+      <li><strong>ECS201</strong> Discrete Mathematics I</li>
+      <li><strong>MTH201</strong> Multivariable Calculus</li>
+      <li><strong>DSE315</strong> Data Science in Practice</li>
+      <li><strong>DSE317</strong> Machine Learning</li>
+    </ul>
+  </section>
+
+  <!-- Other Non-Economic Courses -->
+  <section id="other-courses">
+    <h3>Other Non-Economic Courses</h3>
+    <ul>
+      <li><strong>BIO101</strong> Biology I: Biomolecules</li>
+      <li><strong>CHM101</strong> General Chemistry</li>
+      <li><strong>EES101</strong> Earth Materials and Processes</li>
+      <li><strong>HSS101</strong> English for Communication</li>
+      <li><strong>PHY101</strong> Mechanics</li>
+      <li><strong>CHM112</strong> Basic Organic Chemistry I</li>
+      <li><strong>EES102</strong> Introduction to Environmental Sciences</li>
+      <li><strong>PHY106</strong> Quantum Physics</li>
+      <li><strong>PT101</strong> Physical Training</li>
+      <li><strong>BIO203</strong> Biology V: Diversity of Life I</li>
+      <li><strong>CHE205</strong> Chemical Engineering Thermodynamics</li>
+      <li><strong>CHM221</strong> Basic Physical Chemistry</li>
+      <li><strong>CHE204</strong> Chemical Process Calculations</li>
+      <li><strong>CHM222</strong> Classical Thermodynamics</li>
+      <li><strong>EES202</strong> The Evolution of the Earth</li>
+      <li><strong>PHY206</strong> Physics Through Computational Thinking</li>
+      <li><strong>IPR500</strong> Law Relating to Intellectual Property and Patents</li>
+    </ul>
+  </section>
+</section>
+
+
+  </section>
+
+  <!-- Add JavaScript to dynamically load the navbar -->
+  <script>
+    // Fetch the navbar HTML and insert it into the page
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
+
+    // Highlight the active link based on the current page
+    window.addEventListener('load', function () {
+      const currentPage = window.location.pathname.split("/").pop();
+      const links = document.querySelectorAll("a");
+
+      links.forEach(link => {
+        if (link.href.includes(currentPage)) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
