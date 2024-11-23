@@ -9,15 +9,94 @@
   <div id="navbar"></div>
   <div class="content">
     <h1>Resources</h1>
-    <p>
-      A list of tools, books, and websites that I recommend for self-study and academic growth.
-    </p>
-    <ul>
-      <li><a href="https://example-resource1.com" target="_blank">Latex for Beginners</a></li>
-      <li><a href="https://example-resource2.com" target="_blank">Python Programming for Data Science</a></li>
-      <li><a href="https://example-resource3.com" target="_blank">Mechanism Design Made Easy</a></li>
-    </ul>
+    <p>A collection of useful resource links for students, researchers, and academics.</p>
+
+    <!-- Search Functionality -->
+    <input 
+      type="text" 
+      id="searchBar" 
+      placeholder="Search resources..." 
+      style="width: 100%; padding: 10px; margin-bottom: 20px; font-size: 16px; border: 1px solid #ccc; border-radius: 5px;"
+      onkeyup="filterResources()"
+    />
+    <p id="noResultsMessage" style="display: none; color: red; font-weight: bold; text-align: center;">No matching resources found.</p>
+
+    <!-- List of Lists Section -->
+    <section id="list-of-lists">
+      <h2>List of Lists</h2>
+      <ul class="resource-list">
+        <li><a href="https://www.ryanbedwards.com/resources" target="_blank">Ryan B Edwards</a></li>
+        <li><a href="https://sites.google.com/view/ejm-mentalhealth/references-and-links" target="_blank">EJM-MentalHealth</a></li>
+        <li><a href="https://thelittledataset.com/my-resources/" target="_blank">Alex Albright</a></li>
+        <li><a href="https://christinecai.github.io/items/PublicGoods.html" target="_blank">Christine Cai</a></li>
+        <li><a href="http://www.jdingel.com/teaching/advice.html" target="_blank">Jonathan Dingel</a></li>
+        <li><a href="https://www.patrickbutton.com/resources" target="_blank">Patrick Button</a></li>
+        <li><a href="https://sites.google.com/view/claesbackman/tips-for-phd-students" target="_blank">Claes Bäckman</a></li>
+        <li><a href="https://sites.google.com/site/mkudamatsu/tips4economists" target="_blank">tips4economists - Masayuki Kudamatsu</a></li>
+        <li><a href="https://thelittledataset.com/undergrad-thesis-resources/" target="_blank">Resources for Undergrad Thesis Writers</a></li>
+      </ul>
+    </section>
+
+    <!-- My Collections Section -->
+    <section id="my-collections">
+      <h2>My Collections</h2>
+      <ul class="resource-list">
+        <li><a href="https://open.substack.com/pub/pmichaillat/p/a-minimalist-template-for-academic?utm_campaign=post&utm_medium=web" target="_blank">A Minimalist Template for Academic Presentations</a></li>
+        <li><a href="https://dataverse.harvard.edu/dataverse/harvard" target="_blank">Harvard Research Paper Data</a></li>
+        <li><a href="https://raguide.github.io/" target="_blank">Econ RA Guide</a></li>
+        <li><a href="https://economics.ucsd.edu/undergraduate-program/resources/how-to-prepare-for-a-phd-in-econ/first-steps/how-to-prepare.html" target="_blank">How to Prepare for a PhD in Economics</a></li>
+        <li><a href="https://github.com/Dweepobotee/Econ-Resources" target="_blank">Economics Journals for Short Papers</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/19eOOIIIRitfCOcsFbGHQseiVSg35sNyxATCIcE-G5h0/edit?gid=0#gid=0" target="_blank">Journals with Short Paper Options</a></li>
+        <li><a href="https://sites.google.com/site/amandayagan/writingadvice?authuser=0" target="_blank">Writing and Presentation Advice</a></li>
+        <li><a href="https://www.iza.org/publications/dp/16276/writing-tips-for-crafting-effective-economics-research-papers-2023-2024-edition" target="_blank">Writing Tips for Crafting Effective Economics Research Papers – 2023-2024 Edition</a></li>
+        <li><a href="https://blogs.ubc.ca/khead/research/research-advice" target="_blank">Collected Advice on Doing Research</a></li>
+        <li><a href="https://www.aeaweb.org/about-aea/committees/cswep/mentoring/reading" target="_blank">Mentoring Reading Materials</a></li>
+        <li><a href="https://drive.google.com/file/d/1SHiJs6Uz1wDBOSMRb8rPvu4UkqfJUjSF/view" target="_blank">How to Give an Economic Theory Talk - Shengwu Li</a></li>
+      </ul>
+    </section>
   </div>
+
+  <script>
+    // Search function to filter resource links and highlight matches
+    function filterResources() {
+      const searchValue = document.getElementById("searchBar").value.toLowerCase();
+      const resourceLists = document.querySelectorAll(".resource-list");
+      const noResultsMessage = document.getElementById("noResultsMessage");
+      let hasResults = false;
+
+      resourceLists.forEach(list => {
+        const items = list.querySelectorAll("li");
+        items.forEach(item => {
+          const link = item.querySelector("a");
+          const text = link.textContent.toLowerCase();
+
+          // Clear previous highlighting
+          const originalText = link.textContent;
+          link.innerHTML = originalText;
+
+          if (text.includes(searchValue)) {
+            item.style.display = ""; // Show the item
+            hasResults = true;
+
+            // Highlight the matching text
+            const regex = new RegExp(`(${searchValue})`, "gi");
+            link.innerHTML = originalText.replace(regex, `<span style="background-color: yellow;">$1</span>`);
+          } else {
+            item.style.display = "none"; // Hide the item
+          }
+        });
+      });
+
+      // Show "No results" message if no matches found
+      if (!hasResults) {
+        noResultsMessage.style.display = "block";
+      } else {
+        noResultsMessage.style.display = "none";
+      }
+    }
+  </script>
+
+
 <!-- Add JavaScript to dynamically load the navbar -->
 <script>
   // Fetch the navbar HTML and insert it into the page
@@ -71,6 +150,28 @@
     }
   });
 </script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  h2 {
+    color: #333;
+    margin-top: 30px;
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  a {
+    text-decoration: none;
+    color: #0066cc;
+    transition: color 0.3s;
+  }
+  a:hover {
+    color: #ff6600;
+  }
+</style>
 
 </body>
 </html>
