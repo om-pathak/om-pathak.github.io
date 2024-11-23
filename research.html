@@ -11,6 +11,24 @@
 
   <h1>Research Interests</h1>
   <p>My research interests lie primarily in the fields of microeconomics, game theory, mechanism design, and social choice theory.</p>
+<!-- Add JavaScript to dynamically load the navbar -->
+<script>
+  // Fetch the navbar HTML and insert it into the page
+  fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => document.getElementById('navbar').innerHTML = data);
 
+  // Highlight the active link based on the current page
+  window.addEventListener('load', function () {
+    const currentPage = window.location.pathname.split("/").pop();
+    const links = document.querySelectorAll("a");
+
+    links.forEach(link => {
+      if (link.href.includes(currentPage)) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 </body>
 </html>

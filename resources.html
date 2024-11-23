@@ -18,9 +18,25 @@
       <li><a href="https://example-resource3.com" target="_blank">Mechanism Design Made Easy</a></li>
     </ul>
   </div>
+<!-- Add JavaScript to dynamically load the navbar -->
+<script>
+  // Fetch the navbar HTML and insert it into the page
+  fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => document.getElementById('navbar').innerHTML = data);
 
-  <footer>
-    <p>Thanks and Thanks! <a href="https://jonbarron.info/">Jon Barron</a>, <a href="https://rohitvaish.in/">Rohit Vaish</a>.</p>
-  </footer>
+  // Highlight the active link based on the current page
+  window.addEventListener('load', function () {
+    const currentPage = window.location.pathname.split("/").pop();
+    const links = document.querySelectorAll("a");
+
+    links.forEach(link => {
+      if (link.href.includes(currentPage)) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+ 
 </body>
 </html>
