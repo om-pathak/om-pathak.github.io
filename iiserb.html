@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IISERB</title>
-  <!-- Add your CSS link here -->
+  <link rel="stylesheet" href="styles.css">
   <style>
-    /* Optional Styling for Hidden Content */
     ul {
       margin-left: 20px;
       transition: max-height 0.3s ease-out;
@@ -22,21 +21,28 @@
     h3:hover {
       color: #0056b3;
     }
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    .dark-mode a {
+      color: #90caf9;
+    }
   </style>
 </head>
 <body>
   <div id="navbar"></div>
+  <button id="dark-mode-btn" onclick="toggleDarkMode()">🌙</button>
 
   <h1>IISER Bhopal</h1>
 
-  <!-- Courses Section -->
   <section id="courses">
     <h2>Courses Credited</h2>
 
     <!-- Economics Courses -->
     <section id="economics-courses">
       <h3>Economics Courses</h3>
-      <ul>
+      <ul class="hidden">
         <li><strong>ECO101</strong> Principles of Economics I</li>
         <li><strong>ECO102</strong> Principles of Economics II</li>
         <li><strong>ECO201</strong> Econometrics I</li>
@@ -57,7 +63,7 @@
     <!-- Math and Data Science Courses -->
     <section id="math-data-science-courses">
       <h3>Math and Data Science Courses</h3>
-      <ul>
+      <ul class="hidden">
         <li><strong>MTH101</strong> Calculus of One Variable</li>
         <li><strong>MTH102</strong> Linear Algebra</li>
         <li><strong>ECS102</strong> Introduction to Programming</li>
@@ -71,7 +77,7 @@
     <!-- Other Non-Economic Courses -->
     <section id="other-courses">
       <h3>Other Non-Economic Courses</h3>
-      <ul>
+      <ul class="hidden">
         <li><strong>BIO101</strong> Biology I: Biomolecules</li>
         <li><strong>CHM101</strong> General Chemistry</li>
         <li><strong>EES101</strong> Earth Materials and Processes</li>
@@ -93,9 +99,11 @@
     </section>
   </section>
 
-  <!-- Add JavaScript -->
   <script>
-    // Toggle visibility of the course lists when the heading is clicked
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
+
     document.addEventListener("DOMContentLoaded", () => {
       const headings = document.querySelectorAll("h3");
 
@@ -107,6 +115,34 @@
           }
         });
       });
+    });
+
+    function toggleDarkMode() {
+      const body = document.body;
+      const button = document.getElementById('dark-mode-btn');
+
+      body.classList.toggle('dark-mode');
+
+      if (body.classList.contains('dark-mode')) {
+        button.innerHTML = '🌞';
+      } else {
+        button.innerHTML = '🌙';
+      }
+    }
+
+    window.addEventListener('load', () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('dark-mode-btn').innerHTML = '🌞';
+      }
+    });
+
+    window.addEventListener('beforeunload', () => {
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
     });
   </script>
 </body>
